@@ -1,0 +1,347 @@
+/* ==========================================================
+   Salon Makaze – stilovi
+   Boje i fontovi su na jednom mestu (:root), lako se menjaju.
+   ========================================================== */
+
+:root {
+  --ink: #0F2E2A;        /* tamna šumska zelena */
+  --forest: #14413A;
+  --mist: #E6EEE9;      /* svetla pozadina */
+  --mist-2: #D5E2DA;
+  --blush: #F2C9BD;
+  --brass: #C79A46;      /* mesing akcenat */
+  --brass-dark: #A67C2E;
+  --text: #12201E;
+  --muted: #3F5651;
+
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --pad-x: clamp(20px, 5vw, 72px);
+  --radius: 22px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--mist);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px; top: -60px;
+  background: var(--ink);
+  color: var(--mist);
+  padding: 10px 16px;
+  border-radius: 8px;
+  z-index: 100;
+}
+.skip-link:focus { top: 12px; }
+
+/* ---------- Dugmad ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--mist);
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn:hover { background: var(--forest); border-color: var(--forest); }
+
+.btn-small { padding: 9px 20px; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover { background: var(--ink); color: var(--mist); border-color: var(--ink); }
+
+.btn-brass {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: var(--ink);
+}
+.btn-brass:hover { background: #D8AC58; border-color: #D8AC58; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--pad-x);
+  background: rgba(230, 238, 233, .92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-nav { display: flex; align-items: center; gap: 28px; }
+.site-nav a:not(.btn) { text-decoration: none; font-weight: 500; }
+.site-nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--brass); text-decoration-thickness: 2px; }
+
+.nav-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 24px; height: 2px;
+  background: var(--ink);
+  transition: transform .25s, opacity .25s;
+}
+.nav-toggle-bars { top: 21px; }
+.nav-toggle-bars::before { top: -7px; left: 0; }
+.nav-toggle-bars::after  { top:  7px; left: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after  { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+  padding: clamp(40px, 7vw, 96px) var(--pad-x) clamp(56px, 8vw, 120px);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  max-width: 11ch;
+}
+
+.lead {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--muted);
+  max-width: 34ch;
+  margin: 24px 0 36px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Ogledalo u obliku luka: jedini "upečatljiv" element strane */
+.mirror {
+  position: relative;
+  margin: 0;
+  width: min(100%, 440px);
+  justify-self: center;
+  aspect-ratio: 600 / 760;
+}
+.mirror::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--brass);
+  border-radius: 999px 999px 28px 28px;
+  transform: translate(18px, 18px);
+}
+.mirror img {
+  position: relative;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 999px 999px 28px 28px;
+}
+
+/* Jedna animacija pri učitavanju: tekst pa ogledalo */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1, .lead, .hero-actions { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .lead { animation-delay: .12s; }
+  .hero-actions { animation-delay: .24s; }
+  .mirror { animation: mirror-in .9s cubic-bezier(.2,.7,.2,1) .2s both; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+@keyframes mirror-in { from { opacity: 0; transform: translateY(30px) scale(.97); } }
+
+/* ---------- Cenovnik ---------- */
+.prices {
+  background: var(--ink);
+  color: var(--mist);
+  padding: clamp(56px, 8vw, 112px) var(--pad-x);
+}
+
+.prices-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.prices-photo { margin: 0; }
+.prices-photo img {
+  width: 100%;
+  border-radius: var(--radius);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.prices h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 36px; }
+
+.price-list { list-style: none; margin: 0 0 40px; padding: 0; }
+.price-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 0;
+}
+.price-name { font-size: clamp(1.15rem, 2vw, 1.5rem); }
+.price-dots {
+  flex: 1;
+  min-width: 24px;
+  border-bottom: 2px dotted rgba(230, 238, 233, .4);
+  transform: translateY(-5px);
+}
+.price-value {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 700;
+  color: var(--brass);
+  white-space: nowrap;
+}
+
+/* ---------- Kontakt ---------- */
+.contact {
+  padding: clamp(56px, 8vw, 112px) var(--pad-x);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.contact h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 40px; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+}
+.contact-block { border-top: 2px solid var(--ink); padding-top: 20px; }
+.contact-block h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.contact-block p { margin: 0; }
+
+.phone-link {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.phone-link:hover { text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  margin-bottom: 14px !important;
+}
+.status::before {
+  content: "";
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.status.is-open::before { background: #2E8B57; }
+.status.is-closed::before { background: #B3462F; }
+.status:empty { display: none; }
+
+.hours { list-style: none; margin: 0; padding: 0; }
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--mist-2);
+  max-width: 320px;
+}
+.hours li.today { font-weight: 700; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: var(--mist);
+  padding: 28px var(--pad-x);
+  font-size: .95rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- Mobilni prikaz ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { max-width: 14ch; }
+  .mirror { width: min(78%, 360px); margin-right: 18px; }
+
+  .prices-inner { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .nav-toggle { display: block; }
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px var(--pad-x) 24px;
+    background: var(--mist);
+    border-bottom: 2px solid var(--ink);
+    display: none;
+  }
+  .site-nav.is-open { display: flex; }
+  .site-nav a:not(.btn) { padding: 10px 0; font-size: 1.15rem; }
+}

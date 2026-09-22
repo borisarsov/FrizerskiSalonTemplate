@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salon Makaze – muško i žensko šišanje</title>
+  <meta name="description" content="Frizerski salon: muško šišanje 600 din, žensko šišanje 1000 din. Pozovite i zakažite termin.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Salon Makaze – početak stranice">
+      <!-- IZMENI: naziv salona -->
+      Salon Makaze
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="glavni-meni">
+      <span class="visually-hidden">Meni</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+
+    <nav id="glavni-meni" class="site-nav" aria-label="Glavni meni">
+      <a href="#cenovnik">Cenovnik</a>
+      <a href="#kontakt">Kontakt</a>
+      <!-- IZMENI: broj telefona -->
+      <a class="btn btn-small" href="tel:+381600000000">Pozovi</a>
+    </nav>
+  </header>
+
+  <main id="sadrzaj">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <h1>Frizura koja vam pristaje.</h1>
+        <p class="lead">Muško i žensko šišanje. Pozovite i dogovorite termin.</p>
+        <div class="hero-actions">
+          <a class="btn" href="tel:+381600000000">Pozovite za termin</a>
+          <a class="btn btn-ghost" href="#cenovnik">Pogledaj cenovnik</a>
+        </div>
+      </div>
+
+      <figure class="mirror">
+        <img src="images/makaze.svg" alt="Makaze i češalj" width="600" height="760">
+      </figure>
+    </section>
+
+    <!-- CENOVNIK -->
+    <section class="prices" id="cenovnik">
+      <div class="prices-inner">
+        <figure class="prices-photo">
+          <img src="images/salon.svg" alt="Unutrašnjost salona: okruglo ogledalo, stolica i police" width="1200" height="800" loading="lazy">
+        </figure>
+
+        <div class="prices-content">
+          <h2>Cenovnik</h2>
+
+          <!-- Nova usluga = novi <li> ispod -->
+          <ul class="price-list">
+            <li>
+              <span class="price-name">Muško šišanje</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-value">600 din</span>
+            </li>
+            <li>
+              <span class="price-name">Žensko šišanje</span>
+              <span class="price-dots" aria-hidden="true"></span>
+              <span class="price-value">1000 din</span>
+            </li>
+          </ul>
+
+          <a class="btn btn-brass" href="tel:+381600000000">Zakaži telefonom</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="contact" id="kontakt">
+      <h2>Kontakt</h2>
+
+      <div class="contact-grid">
+        <div class="contact-block">
+          <h3>Adresa</h3>
+          <!-- IZMENI: adresa -->
+          <p>Ulica i broj<br>Grad</p>
+        </div>
+
+        <div class="contact-block">
+          <h3>Telefon</h3>
+          <!-- IZMENI: broj telefona (i gore u tel: linkovima) -->
+          <p><a class="phone-link" href="tel:+381600000000">+381 60 000 0000</a></p>
+        </div>
+
+        <div class="contact-block">
+          <h3>Radno vreme</h3>
+          <p class="status" id="status" role="status"></p>
+          <ul class="hours" id="hours">
+            <li>Pozovite za radno vreme.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="godina">2026</span> Salon Makaze</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
